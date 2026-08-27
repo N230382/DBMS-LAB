@@ -44,6 +44,7 @@ INSERT INTO Income_Category (category_id, category_name, description, taxable) V
     (5, 'Other Sources', 'Income such as bank interest',TRUE),
     (6 ,'Agricultural Income', 'Income from eligible agricultural activities',FALSE);
 SELECT * FROM Income_Category;
+rollback;
 
 
 CREATE TABLE Financial_Year(year_id INT Primary Key,year_labe VARCHAR(9) Not Null, start_date DATE Not Null, end_date DATE Not Null,
@@ -74,7 +75,32 @@ INSERT INTO Income_Record (income_id,taxpayer_id ,income_source ,category_name ,
     (1004, 104, 'Sunrise School','Salary', '620000.00','2026-03-31','2025-2026'),
     (1005,105, 'Web Design Projects','Business','7500000.00','2026-03-31','2025-2026'),
     (1006,106, 'Professional Consulting', 'Business', '1500000.00','2026-03-31','2025-2026');
+    
 SELECT * FROM income_record;
+
+
+-- PART D TASK
+-- TASK-1
+INSERT INTO Taxpayer() 
+VALUES
+	(107,'GHJK7890M','Vikram Dutt','1995-05-01','Architech','150000.00','vikram.dutt@example.com',1,'','','Hyderabad');
+
+-- TASK-2
+UPDATE Taxpayer SET annual_income='950000.00' WHERE taxpayer_id=101;
+
+-- TASK-3
+UPDATE Taxpayer SET occupation='Software Consultant' WHERE taxpayer_id=105;
+
+-- TASK-4
+UPDATE Taxpayer SET is_active=0 WHERE taxpayer_id=106;
+SELECT * FROM taxpayer;
+
+-- TASK-5
+DELETE FROM Taxpayer WHERE taxpayer_id=107;
+
+-- TASK-6
+ALTER TABLE income_category ADD rental_income INT;
+SELECT * FROM income_category;
 
 
 -- PART E TASK
@@ -89,8 +115,8 @@ ALTER TABLE taxpayer MODIFY COLUMN occupation VARCHAR(100);
 
 -- TASK-4
 CREATE TABLE Tax_Office(office_id INT Primary Key, office_name VARCHAR(20) Not Null, city VARCHAR(20) Not Null);
-INSERT INTO Tax_Office() VALUES (101, 'MAHESH TECHNOLOGIES','VISHAKAPATNAM');
-INSERT INTO Tax_Office() VALUES (102, 'RAMANA TECH', 'HYDERABAD');
+INSERT INTO Tax_Office() VALUES (1,'DELL','Hyderabad');
+INSERT INTO Tax_Office() VALUES (2, 'HP', 'Mumbai');
 SELECT * FROM Tax_Office;
 			
 -- TASK-5
@@ -99,6 +125,7 @@ SELECT * FROM Tax_Office;
 
 -- TASK-6
 DROP TABLE Tax_Office;
+
 
 -- PART-F 
 INSERT INTO taxpayer() VALUES (101,'ABCDE2304F', 'Vikram Dutt' ,
@@ -115,6 +142,12 @@ INSERT INTO taxpayer() VALUES (107,'ABCDE1234F', 'Vikram Dutt' ,
 INSERT INTO taxpayer() VALUES (107,'ABCDE145f', ' ' ,
         '1995-06-11' , 'Architech-Assit' ,'150000.00' , 'vikram@example.com' ,TRUE);
         -- not null constraint prevents the insertion
+        
+        
+	
+USE taxation_database;
+SHOW TABLES;
+
 
 
 
